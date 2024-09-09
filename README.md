@@ -32,7 +32,7 @@ npm run dev
 yarn dev
 # ou
 pnpm dev
-# u
+# ou
 bun dev
 
 
