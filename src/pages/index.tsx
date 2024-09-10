@@ -55,7 +55,7 @@ export default function Home() {
             </button>
           </div>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-6 text-center text-sm text-gray-800">
           Não tem uma conta?{" "}
           <a href="#" className="text-indigo-600 hover:text-indigo-500">
             Cadastre-se
