@@ -1,11 +1,23 @@
-import React from "react";
-import { FaUser, FaLock } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
-export default function Home() {
+function Home() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Função para alternar entre mostrar/ocultar a senha
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('./imagem2.jpg')" }}
+      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat px-4"
+      style={{
+        backgroundImage: "url('./imagem2.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
     >
       <div className="bg-white bg-opacity-30 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-md md:max-w-sm sm:max-w-xs">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -24,7 +36,7 @@ export default function Home() {
               <input
                 type="email"
                 id="email"
-                className="mt-1 block w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-600"
                 placeholder="Digite seu email"
               />
             </div>
@@ -39,11 +51,18 @@ export default function Home() {
             <div className="relative">
               <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"} 
                 id="password"
-                className="mt-1 block w-full pl-10 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full pl-10 pr-10 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-600"
                 placeholder="Digite sua senha"
               />
+              
+              <div
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
           </div>
           <div>
@@ -65,3 +84,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
